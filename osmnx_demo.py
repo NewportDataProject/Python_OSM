@@ -12,6 +12,12 @@ import osmnx as ox
 import networkx as nx
 import pandas as pd
 
+# configure osmnx to get the tags we want
+my_useful_tags_path = ['bridge', 'tunnel', 'oneway', 'lanes', 'ref', 'name', 'highway', 'maxspeed', 'service', 'access',
+                    'area', 'landuse', 'width', 'est_width', 'lit', 'sidewalk', 'surface']
+ox.config(useful_tags_path=my_useful_tags_path)
+
+# some maps
 city = ox.gdf_from_place('Newport, RI')
 ox.plot_shape(ox.project_gdf(city))
 
@@ -35,6 +41,19 @@ ox.plot_graph(newport_streets, edge_color=edge_length_colors)
 # plot graph with one-way streets in red
 one_way_colors = ['r' if data['oneway'] else 'b' for u, v, key, data in newport_streets.edges(keys=True, data=True)]
 ox.plot_graph(newport_streets, node_size=0, edge_color=one_way_colors)
+
+# plot graph highlighting sidewalks
+
+edge_count = len(newport_streets.edges())
+sidewalk_colors = ['y'] * edge_count
+for k in range(0,edge_count):
+    try:
+        newport_streets.edges(data=True)[k][2]['sidewalk']
+        sidewalk_colors[k] = 'b'
+    except KeyError:
+        continue
+
+ox.plot_graph(newport_streets,node_size=0, edge_color=sidewalk_colors)
 
 # routes. location is from the tutorial.  adjust location_point, origin_point, and destination_point.
 location_point = (37.791427, -122.410018)
