@@ -8,7 +8,7 @@ The `osmnx` package has some fickle dependencies (for windows, anyway). Start by
 > conda create -n OSM python=3.5
 ```
 Then follow the instructions [here](http://geoffboeing.com/2014/09/using-geopandas-windows/) to install `GDAL` and `fiona`.
-Where it calls for setting the `PATH` environmental variable in the instructions, use [this](https://conda.io/docs/using/envs.html#saved-environment-variables)
+Where it calls for setting the `PATH` environmental variable in the instructions, use [this](https://conda.io/docs/using/envs.html#saved-environment-variables) and [this](http://stackoverflow.com/questions/31598963/how-to-set-specific-environment-variables-when-activating-conda-environment)
 then add the following line to to the `activate.d\env_var.bat` file you created:
 ```
 set PATH=%PATH%;<path/to/omgeo/in/env>
