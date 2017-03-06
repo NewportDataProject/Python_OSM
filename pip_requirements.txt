@@ -12,6 +12,7 @@ matplotlib==2.0.0
 munch==2.1.0
 networkx==1.11
 numpy==1.12.0
+osmapi==0.8.1
 osmnx==0.4
 pandas==0.19.2
 pyparsing==2.1.10
