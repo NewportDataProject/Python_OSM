@@ -1,5 +1,5 @@
-# Python_OSM
-Working with OpenStreetMap in python
+# osm-analysis
+Working with OpenStreetMap in python, R, ...
 
 ## Setting Up The Conda Environment
 The `osmnx` package has some fickle dependencies (for windows, anyway). Start by building a conda env like so:
